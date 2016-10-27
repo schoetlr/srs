@@ -6,6 +6,9 @@ class CardsController < ApplicationController
     @card.user_id = current_user.id
 
     if @card.save
+      @card.next_due = @card.created_at
+      @card.save
+      
       respond_to do |format|
         format.json { render json: @card }
       end

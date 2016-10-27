@@ -27,6 +27,14 @@ class DecksController < ApplicationController
 
   end
 
+  def show
+    @deck = Deck.find(params[:id])
+
+    respond_to do |format|
+      format.json { render json: @deck.to_json(include: :cards) }
+    end
+  end
+
 
   def update
     @deck = Deck.find(params[:id])

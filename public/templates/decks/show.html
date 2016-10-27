@@ -1,6 +1,25 @@
-<div class="row">
-  <div class="col-xs-12">
-    <h1>SHOW</h1>
+<div class="deck-container">
+
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>{{ deck.title }}</h1>
+      <p>{{ cards.length }} cards</p>
+
+
+      <div class="row">
+        <div class="col-xs-6">
+          <a ng-click="studyDueCards()"><h5>Study Due</h5></a>
+        </div>
+
+        <div class="col-xs-6">
+          <a ng-click="studyAllCards()"><h5>Study All</h5></a>
+        </div>
+
+      </div>
+    </div>
+
   </div>
+
+  
 
 </div>

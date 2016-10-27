@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   get 'srs' => 'static_pages#srs'
 
-  resources :decks, only: [:index, :create, :update, :destroy]
+  get 'current_time' => 'current_time_controller#current_time'
+
+  resources :decks, only: [:index, :create, :update, :destroy, :show]
   resources :cards, only: [:create, :update, :destroy]
 
   devise_scope :user do 

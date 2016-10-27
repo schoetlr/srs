@@ -10,6 +10,10 @@ srs.factory("deckService", ['Restangular', function(Restangular){
 
   };
 
+  service.getDeck = function(id){
+    return Restangular.one("decks", id).get();
+  }
+
   service.getDecks = function(){
     return Restangular.all("decks").getList();
   };
