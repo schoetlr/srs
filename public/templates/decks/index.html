@@ -1,0 +1,10 @@
+<p>DECKS INDEX</p>
+<div class="decks-container">
+  <div class="row" ng-repeat="deck in decks">
+    <div class="col-xs-12">
+      <h1 ui-sref="decks.show({ id: deck.id })">{{ deck.title }}</h1>
+    </div>
+
+
+  </div>
+</div>

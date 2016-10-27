@@ -40,6 +40,12 @@ srs.config(function($stateProvider, $urlRouterProvider){
       controller: "DecksCtrl"
     })
 
+    .state("decks.show", {
+      url: ":id",
+      templateUrl: "/templates/decks/show.html",
+      controller: "DeckCtrl"
+    })
+
   
 })
 

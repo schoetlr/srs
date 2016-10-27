@@ -27,6 +27,36 @@ class DecksController < ApplicationController
   end
 
 
+  def update
+    @deck = Deck.find(params[:id])
+
+    if @deck.update(deck_params)
+      respond_to do |format|
+        format.json { render json: @deck.to_json(include: :cards) }
+      end
+    else
+      respond_to do |format|
+        format.json {}
+      end
+
+    end
+
+
+  end
+
+  def destroy
+    @deck = Deck.find(params[:id])
+
+    @deck.destroy
+
+
+    respond_to do |format|
+      format.json { render json: @deck }
+    end
+
+  end
+
+
 
   private
 

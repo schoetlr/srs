@@ -2,6 +2,13 @@ Rails.application.routes.draw do
   devise_for :users
 
   get 'srs' => 'static_pages#srs'
+
+  resources :decks, only: [:index, :create, :update, :destroy]
+  resources :cards, only: [:create, :update, :destroy]
+
+  devise_scope :user do 
+    root 'devise/sessions#new'
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
