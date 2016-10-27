@@ -1,4 +1,4 @@
-var srs = angular.module('srs', ['ui.router', 'restangular', 'angularModalService', 'angular-sortable-view']);
+var srs = angular.module('srs', ['ui.router', 'restangular', 'angularModalService']);
 
 
 
