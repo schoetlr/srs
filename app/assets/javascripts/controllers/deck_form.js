@@ -1,8 +1,9 @@
-srs.controller("DeckFormCtrl", ['$scope', 'deckService', function($scope, deckService){
+srs.controller("DeckFormCtrl", ['$scope', 'deckService', 'close', 'deck', '$rootScope', function($scope, deckService, close, deck, $rootScope){
 
+  $scope.deck = deck;
   $scope.deckForm = {};
 
-  if($scope.deck){
+  if($scope.deck.id){
     $scope.updating = true;
   } else {
     $scope.creating = true;
@@ -16,17 +17,12 @@ srs.controller("DeckFormCtrl", ['$scope', 'deckService', function($scope, deckSe
       deckService.updateDeck($scope.deck);
     }
     
-
-
-    $scope.closeModal('result?');
-  };
-
-  $scope.updateDeck = function(){
-    deckService.updateDeck($scope.deckForm);
-
+    $rootScope.$broadcast("decks.changed");
 
     $scope.closeModal('result?');
   };
+
+  
 
   $scope.closeModal = function(result){
     close(result, 1);

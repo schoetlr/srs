@@ -3,6 +3,7 @@ class CardsController < ApplicationController
 
   def create
     @card = Card.new(card_params)
+    @card.user_id = current_user.id
 
     if @card.save
       respond_to do |format|
@@ -40,7 +41,7 @@ class CardsController < ApplicationController
     respond_to do |format|
       format.json { render json: @card }
     end
-    
+
   end
 
 

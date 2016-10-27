@@ -1,14 +1,26 @@
-<p>DECKS INDEX</p>
-<p ng-click="deckForm()">New Deck</p>
 <div class="decks-container">
-  <div class="row" ng-repeat="deck in decks">
+  <div class="row">
     <div class="col-xs-12">
-      <h1 ui-sref="decks.show({ id: deck.id })">{{ deck.title }}</h1>
-      <span class="deck-links pull-right">
-        <p ng-click="deckForm(deck)">Edit</p>
-        <p>Destroy</p>
-      </span>
+      <a><p ng-click="deckForm()">New Deck</p></a>
     </div>
+  </div>
+  <div class="row" ng-repeat="deck in decks">
+    <div class="col-xs-4">
+      <h1 ui-sref="decks.show({ id: deck.id })">{{ deck.title }}</h1>
+    </div>
+
+    <div class="col-xs-1"> 
+      <p class="pull-right" ng-click="deckForm(deck)">Edit</p>
+    </div>
+
+    <div class="col-xs-1">
+      <p ng-click="destroyDeck(deck)" class="pull-right">Destroy</p>
+    </div>
+
+    <div class="col-xs-6">
+    </div>
+  
+    
 
 
   </div>

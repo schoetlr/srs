@@ -14,7 +14,8 @@
         <form>
           <div class="form-group">
             <label>Title</label>
-            <input ng-model="deckForm.title" type="text" class="form-control">
+            <input  ng-if="creating" ng-model="deckForm.title" type="text" class="form-control">
+            <input  ng-if="updating" ng-model="deck.title" type="text" class="form-control">
           </div>
 
           <button ng-click="submitForm()" class="btn btn-primary">Submit</button>
