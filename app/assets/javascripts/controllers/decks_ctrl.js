@@ -8,14 +8,14 @@ srs.controller("DecksCtrl", ['$scope', 'deckService', function($scope, deckServi
 
 
 
-  $scope.newDeck = function() {
+  $scope.deckForm = function(deck) {
     
     
     ModalService.showModal({
-      templateUrl: "/templates/decks/new.html",
-      controller: "NewDeckCtrl",
+      templateUrl: "/templates/decks/form.html",
+      controller: "DeckFormCtrl",
       inputs: {
-        
+        deck: deck
       }
     }).then(function(modal) {
     

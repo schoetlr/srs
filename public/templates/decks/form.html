@@ -5,7 +5,8 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h1>New Deck</h1>
+        <h1 ng-if="creating">New Deck</h1>
+        <h1 ng-if="updating">Updating Deck</h1>
         
         
       </div>
@@ -16,7 +17,7 @@
             <input ng-model="deckForm.title" type="text" class="form-control">
           </div>
 
-          <button ng-click="createDeck()" class="btn btn-primary">Create Deck</button>
+          <button ng-click="submitForm()" class="btn btn-primary">Submit</button>
         </form>
       </div>
 

@@ -1,9 +1,13 @@
 <p>DECKS INDEX</p>
-<p ng-click="newDeck()">New Deck</p>
+<p ng-click="deckForm()">New Deck</p>
 <div class="decks-container">
   <div class="row" ng-repeat="deck in decks">
     <div class="col-xs-12">
       <h1 ui-sref="decks.show({ id: deck.id })">{{ deck.title }}</h1>
+      <span class="deck-links pull-right">
+        <p ng-click="deckForm(deck)">Edit</p>
+        <p>Destroy</p>
+      </span>
     </div>
 
 
