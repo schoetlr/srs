@@ -10,8 +10,32 @@
       
 
       <div class="modal-body">
-        
+        <form>
+          <div class="form-group">
+            <label>Deck</label>
+            
+            <select class="form-control" ng-model="cardForm.deck_id">
+              <option selected="selected" value={{selectedDeck.id}}>{{selectedDeck.title}}</option>
+              <option ng-repeat="deck in decks" value={{deck.id}}>{{deck.title}}</option>
+            </select>
+          </div>
+          
 
+          <div class="form-group">
+            <label>Front</label>
+            <textarea class="form-control" ng-model="cardForm.front"></textarea>
+          </div>
+          
+
+          <div class="form-group">
+            <label>Back</label>
+            <textarea class="form-control" ng-model="cardForm.back"></textarea>
+          </div>
+          
+          
+          <button ng-click="createCard()" class="btn btn-primary">Create Card</button>
+
+        </form>
            
         
       </div>
