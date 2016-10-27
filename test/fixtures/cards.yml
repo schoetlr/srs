@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  deck_id: 1
+  front: MyText
+  back: MyText
+  cloze: false
+  user_id: 1
+  next_due: 2016-10-27 08:08:12
+
+two:
+  deck_id: 1
+  front: MyText
+  back: MyText
+  cloze: false
+  user_id: 1
+  next_due: 2016-10-27 08:08:12

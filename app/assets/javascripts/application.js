@@ -12,5 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require bootstrap.js
+
+//= require angular
+//= require angular-ui-router.min.js
+//= require underscore-min.js
+//= require restangular.min.js
+
+
 //= require_tree .
