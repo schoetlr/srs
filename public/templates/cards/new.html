@@ -13,10 +13,9 @@
         <form>
           <div class="form-group">
             <label>Deck</label>
-            
-            <select class="form-control" ng-model="cardForm.deck_id">
-              <option selected="selected" value={{selectedDeck.id}}>{{selectedDeck.title}}</option>
-              <option ng-repeat="deck in decks" value={{deck.id}}>{{deck.title}}</option>
+
+            <select class="form-control" ng-model="deckData.selectedDeck" ng-options="deck.title for deck in deckData.decks track by deck.id">
+              
             </select>
           </div>
           

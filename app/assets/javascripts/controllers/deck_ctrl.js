@@ -5,6 +5,15 @@ srs.controller("DeckCtrl", ['$scope', 'deckService', '$stateParams', '$rootScope
 
     $scope.cards = $scope.deck.cards;
   });
+
+
+  $scope.$on("card.created", function(){
+    deckService.getDeck($stateParams.id).then(function(response){
+      $scope.deck = response;
+
+      $scope.cards = $scope.deck.cards;
+    });
+  })
   
   $scope.studyDueCards = function() {
     
