@@ -15,7 +15,13 @@ srs.controller("AllCardsCtrl", ['$scope', 'cards', function($scope, cards){
   };
 
   $scope.nextCard = function(){
-    $scope.card = $scope.cards.shift();
+    if($scope.cards.length > 0){
+      $scope.card = $scope.cards.shift();
+    } else {
+      console.log("else");
+      $scope.cardSide = "outOfCards";
+    }
+    
   };
 
 }]);
