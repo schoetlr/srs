@@ -22,7 +22,7 @@ srs.controller("DeckCtrl", ['$scope', 'deckService', '$stateParams', '$rootScope
       templateUrl: "/templates/cards/study_due_cards.html",
       controller: "DueCardsCtrl",
       inputs: {
-        deck: deck
+        cards: angular.copy($scope.deck.cards)
       }
     }).then(function(modal) {
     
@@ -41,15 +41,17 @@ srs.controller("DeckCtrl", ['$scope', 'deckService', '$stateParams', '$rootScope
       templateUrl: "/templates/cards/study_all_cards.html",
       controller: "AllCardsCtrl",
       inputs: {
-        deck: deck
+        cards: angular.copy($scope.deck.cards)
       }
-    }).then(function(modal) {
+      }).then(function(modal){
     
       modal.element.modal();
       modal.close.then(function(result) {
         console.log("modal closed");
       });
+
     });
+  
 
   };
 
