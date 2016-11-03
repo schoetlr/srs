@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get 'srs' => 'static_pages#srs'
 
-  get 'current_time' => 'current_time_controller#current_time'
+  
   resources :current_time, only: [:index]
 
   resources :decks, only: [:index, :create, :update, :destroy, :show]

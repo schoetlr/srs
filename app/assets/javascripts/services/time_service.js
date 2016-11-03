@@ -4,6 +4,7 @@ srs.factory("timeService", ['Restangular', function(Restangular){
 
   service.getCurrentTime = function(){
     //return Restangular.customGET("current_time");
+    //customGET not working so using odd workaround
     return Restangular.all("current_time").getList();
   };
 
