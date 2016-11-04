@@ -1,4 +1,4 @@
-<div class="modal fade" role="dialog">
+<div class="modal fade study-cards" role="dialog">
   <div class="modal-dialog">
 
     
@@ -9,7 +9,12 @@
       
 
       <div id="front-card" ng-if="cardSide === 'front'" class="modal-body">
-        <h7>{{ card.front }}</h7>
+        <div class="row">
+          <div class="col-xs-12">
+            <h7 class="text-center card-content">{{ card.front }}</h7>
+          </div>
+        </div>
+        
 
         <div class="row">
            <div class="col-xs-12">
@@ -21,7 +26,12 @@
       </div>
 
       <div ng-if="cardSide === 'back'" class="modal-body">
-        <h7>{{ card.back }}</h7>
+        <div class="row">
+          <div class="col-xs-12">
+            <h7 class="text-center card-content">{{ card.back }}</h7>
+          </div>
+        </div>
+        
 
         <div class="row">
            <div class="col-xs-12">
