@@ -8,7 +8,7 @@ class CardsController < ApplicationController
     if @card.save
       @card.next_due = @card.created_at
       @card.save
-      
+
       respond_to do |format|
         format.json { render json: @card }
       end
@@ -54,6 +54,7 @@ class CardsController < ApplicationController
   def card_params
     params.require(:card).permit(:back, :front,
                                  :cloze, :next_due, 
-                                 :deck_id, :user_id)
+                                 :deck_id, :user_id,
+                                 :last_studied)
   end
 end

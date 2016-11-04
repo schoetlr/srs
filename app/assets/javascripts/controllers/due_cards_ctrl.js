@@ -1,4 +1,4 @@
-srs.controller("DueCardsCtrl", ['$scope', 'timeService', 'cards', '_', function($scope, timeService, cards, _){
+srs.controller("DueCardsCtrl", ['$scope', 'timeService', 'cards', '_', 'cardService', function($scope, timeService, cards, _, cardService){
 
 
   timeService.getCurrentTime().then(function(response){
@@ -27,6 +27,9 @@ srs.controller("DueCardsCtrl", ['$scope', 'timeService', 'cards', '_', function(
 
   $scope.nextCard = function(){
     //set the next_due for the card based on the response
+    //set last_studied to and patch
+    $scope.card.last_studied = $scope.currentDate;
+    cardService.updateCard(card);
 
 
     if($scope.cards.length > 0){
