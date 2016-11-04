@@ -11,17 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161027120812) do
+ActiveRecord::Schema.define(version: 20161104170822) do
 
   create_table "cards", force: :cascade do |t|
-    t.integer  "deck_id",                    null: false
+    t.integer  "deck_id",                      null: false
     t.text     "front"
     t.text     "back"
-    t.boolean  "cloze",      default: false
+    t.boolean  "cloze",        default: false
     t.integer  "user_id"
     t.datetime "next_due"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.datetime "last_studied"
   end
 
   create_table "decks", force: :cascade do |t|
