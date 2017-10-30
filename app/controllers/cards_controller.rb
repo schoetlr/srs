@@ -25,6 +25,8 @@ class CardsController < ApplicationController
   def update
     @card = Card.find(params[:id])
 
+    last_interval = @card.last_interval
+
     if @card.update(card_params)
       respond_to do |format|
         format.json { render json: @card }

@@ -5,6 +5,8 @@ srs.controller("DueCardsCtrl", ['$scope', 'timeService', 'cards', '_', 'cardServ
     $scope.currentDate = response;
 
     $scope.cards = _.filter(cards, function(card){
+      current = $scope.currentDate;
+      card_date = card;
       return card.next_due <= $scope.currentDate;
     });
 
@@ -25,10 +27,11 @@ srs.controller("DueCardsCtrl", ['$scope', 'timeService', 'cards', '_', 'cardServ
     }
   };
 
-  $scope.nextCard = function(){
-    //set the next_due for the card based on the response
+  $scope.nextCard = function(difficulty){
     //set last_studied to and patch
     $scope.card.last_studied = $scope.currentDate;
+    //next_due calculated on backend using difficulty
+    $scope.card.next_due = difficulty;
     cardService.updateCard(card);
 
 
@@ -43,7 +46,7 @@ srs.controller("DueCardsCtrl", ['$scope', 'timeService', 'cards', '_', 'cardServ
 
 
   $scope.redoCard = function(){
-    // set the next_due of the card
+    //next_due stays the same so you see the card again
 
     $scope.cards.push($scope.card);
     $scope.nextCard();

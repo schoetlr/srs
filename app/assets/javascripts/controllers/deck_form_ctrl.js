@@ -11,12 +11,12 @@ srs.controller("DeckFormCtrl", ['$scope', 'deckService', 'close', 'deck', '$root
 
   $scope.submitForm = function(){
 
-    if(!$scope.deck){
+    if($scope.creating){
       deckService.createDeck($scope.deckForm);
     } else {
       deckService.updateDeck($scope.deck);
     }
-    
+    //change this so just the new/modified deck is updated
     $rootScope.$broadcast("decks.changed");
 
     $scope.closeModal('result?');

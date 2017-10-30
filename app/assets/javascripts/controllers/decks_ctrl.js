@@ -14,7 +14,7 @@ srs.controller("DecksCtrl", ['$scope', 'deckService', 'ModalService', '$rootScop
 
 
 
-  $scope.deckForm = function(deck) {
+  $scope.deckForm = function(deck){
     if(!deck){
       var deck = {};
     }
@@ -25,10 +25,10 @@ srs.controller("DecksCtrl", ['$scope', 'deckService', 'ModalService', '$rootScop
       inputs: {
         deck: deck
       }
-    }).then(function(modal) {
+    }).then(function(modal){
     
       modal.element.modal();
-      modal.close.then(function(result) {
+      modal.close.then(function(result){
         console.log("modal closed");
       });
     });
