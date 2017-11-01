@@ -25,7 +25,11 @@ class CardsController < ApplicationController
   def update
     @card = Card.find(params[:id])
 
-    last_interval = @card.last_interval
+    current_time = DateTime.now.in_time_zone('Eastern Time (US & Canada)')
+    difficulty = card_params[:next_due]
+
+    #apply the scheduling algorithm
+    next_due = Scheduler.schedule(current_time, difficulty)
 
     if @card.update(card_params)
       respond_to do |format|
