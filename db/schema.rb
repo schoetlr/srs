@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20171101132935) do
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
     t.datetime "last_studied"
-    t.integer  "repitition"
+    t.integer  "repetition"
     t.float    "e_factor"
   end
 
