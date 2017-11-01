@@ -23,23 +23,29 @@ class CardsController < ApplicationController
 
 
   def update
-    @card = Card.find(params[:id])
-    difficulty = params[:difficulty].to_i
+    if params[:study]
+      @card = Card.find(params[:id])
+      difficulty = params[:difficulty].to_i
 
-    
-    @card.repetition += 1
-    #apply the scheduling algorithm
-    Scheduler.schedule(@card, difficulty)
-    
-
-    if @card.update(card_params)
+      @card.repetition += 1
+      #apply the scheduling algorithm
+      Scheduler.schedule(@card, difficulty)
+      
       respond_to do |format|
         format.json { render json: @card }
       end
     else
-      respond_to do |format|
-        format.json {}
+
+      if @card.update(card_params)
+        respond_to do |format|
+          format.json { render json: @card }
+        end
+      else
+        respond_to do |format|
+          format.json {}
+        end
       end
+
     end
   end
 
@@ -60,8 +66,6 @@ class CardsController < ApplicationController
 
   def card_params
     params.require(:card).permit(:back, :front,
-                                 :cloze, :next_due, 
-                                 :deck_id, :user_id,
-                                 :last_studied, :repetition)
+                                 :cloze, :deck_id)
   end
 end

@@ -1,8 +1,10 @@
-srs.controller("DueCardsCtrl", ['$scope', 'timeService', 'cards', '_', 'cardService', function($scope, timeService, cards, _, cardService){
+srs.controller("DueCardsCtrl", ['$scope', 'dateService', 'cards', '_', 'cardService', function($scope, dateService, cards, _, cardService){
 
 
-  timeService.getCurrentTime().then(function(response){
-    $scope.currentDate = response;
+  dateService.getCurrentDate().then(function(response){
+    tele = response;
+    $scope.currentDate = response[0];
+    console.log('date response works');
 
     $scope.cards = _.filter(cards, function(card){
       current = $scope.currentDate;
@@ -29,8 +31,8 @@ srs.controller("DueCardsCtrl", ['$scope', 'timeService', 'cards', '_', 'cardServ
 
   $scope.nextCard = function(difficulty){
     
-    cardService.updateCard(card, difficulty).then(function(response){
-      response = response[0];
+    cardService.scheduleCard($scope.card, difficulty).then(function(response){
+      foofoo = response;
 
       if($scope.currentDate == response.next_due){
         $scope.cards.push(response);
@@ -41,6 +43,7 @@ srs.controller("DueCardsCtrl", ['$scope', 'timeService', 'cards', '_', 'cardServ
 
 
     if($scope.cards.length > 0){
+      $scope.flipCard();
       $scope.card = $scope.cards.shift();
     } else {
       $scope.cardSide = "outOfCards";
@@ -50,10 +53,12 @@ srs.controller("DueCardsCtrl", ['$scope', 'timeService', 'cards', '_', 'cardServ
 
 
   $scope.redoCard = function(){
-    //next_due stays the same so you see the card again
+    $scope.card.repetition = 0;
 
     $scope.cards.push($scope.card);
-    $scope.nextCard();
+
+    $scope.flipCard();
+    $scope.card = $scope.cards.shift();
   };
 
 

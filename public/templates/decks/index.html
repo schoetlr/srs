@@ -1,12 +1,12 @@
 <div class="decks-container">
   <div class="row">
     <div class="col-xs-12">
-      <a><p ng-click="deckForm()">New Deck</p></a>
+      <a><p ng-click="deckForm()" class="clickable">New Deck</p></a>
     </div>
   </div>
   <div class="row" ng-repeat="deck in decks">
     <div class="col-xs-4">
-      <h1 ui-sref="decks.show({ id: deck.id })">{{ deck.title }}</h1>
+      <h1 ui-sref="decks.show({ id: deck.id })" class="clickable">{{ deck.title }}</h1>
     </div>
 
     <div class="col-xs-1"> 

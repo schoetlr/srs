@@ -5,6 +5,7 @@ class Scheduler
   #time_studied is a DateTime
   def self.schedule(card, difficulty)
     #reset card if too hard w/p changing easiness factor
+    #handling this first case on front end for now
     if difficulty < 3
       card.repetition = 0
       card.save
@@ -20,14 +21,15 @@ class Scheduler
   end
 
   #calculates the next inter-repetition interval in days given n repetitions
-  def calc_interval(e_factor, n)
+  def self.calc_interval(e_factor, n)
     return 1 if n == 1
     return 6 if n == 2
 
     return calc_interval(e_factor, n-1) * e_factor
   end
+  
   #calculates the new easiness factor
-  def calc_e_factor(old_factor, difficulty)
+  def self.calc_e_factor(old_factor, difficulty)
     ef = old_factor + (0.1 - (5 - difficulty) * (0.08 + (5 - difficulty) * 0.02))
 
     ef < 1.3 ? 1.3 : ef
