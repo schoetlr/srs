@@ -24,12 +24,13 @@ class CardsController < ApplicationController
 
   def update
     @card = Card.find(params[:id])
+    difficulty = params[:difficulty].to_i
 
-    current_time = DateTime.now.in_time_zone('Eastern Time (US & Canada)')
-    difficulty = card_params[:next_due]
-
+    
+    @card.repetition += 1
     #apply the scheduling algorithm
-    next_due = Scheduler.schedule(current_time, difficulty)
+    Scheduler.schedule(@card, difficulty)
+    
 
     if @card.update(card_params)
       respond_to do |format|
@@ -61,6 +62,6 @@ class CardsController < ApplicationController
     params.require(:card).permit(:back, :front,
                                  :cloze, :next_due, 
                                  :deck_id, :user_id,
-                                 :last_studied)
+                                 :last_studied, :repetition)
   end
 end

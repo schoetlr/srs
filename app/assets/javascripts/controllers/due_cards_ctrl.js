@@ -13,7 +13,7 @@ srs.controller("DueCardsCtrl", ['$scope', 'timeService', 'cards', '_', 'cardServ
     $scope.card = $scope.cards.shift();
 
   }, function(){
-    console.log("there was an error getting current_time");
+    console.log("there was an error getting current date");
   })
 
 
@@ -28,17 +28,21 @@ srs.controller("DueCardsCtrl", ['$scope', 'timeService', 'cards', '_', 'cardServ
   };
 
   $scope.nextCard = function(difficulty){
-    //set last_studied to and patch
-    $scope.card.last_studied = $scope.currentDate;
-    //next_due calculated on backend using difficulty
-    $scope.card.next_due = difficulty;
-    cardService.updateCard(card);
+    
+    cardService.updateCard(card, difficulty).then(function(response){
+      response = response[0];
+
+      if($scope.currentDate == response.next_due){
+        $scope.cards.push(response);
+      }
+    }, function(){
+      console.log("there was a problem updating card")
+    });
 
 
     if($scope.cards.length > 0){
       $scope.card = $scope.cards.shift();
     } else {
-      console.log("else");
       $scope.cardSide = "outOfCards";
     }
     

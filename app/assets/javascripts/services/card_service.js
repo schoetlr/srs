@@ -9,8 +9,8 @@ srs.factory("cardService", ['Restangular', function(Restangular){
 
   };
 
-  service.updateCard = function(card){
-    card.patch();
+  service.updateCard = function(card, difficulty){
+    return card.patch({ difficulty: difficulty });
   };
 
   return service;

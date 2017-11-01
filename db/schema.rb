@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171101132935) do
+ActiveRecord::Schema.define(version: 20171101141918) do
 
   create_table "cards", force: :cascade do |t|
     t.integer  "deck_id",                      null: false
@@ -19,12 +19,12 @@ ActiveRecord::Schema.define(version: 20171101132935) do
     t.text     "back"
     t.boolean  "cloze",        default: false
     t.integer  "user_id"
-    t.datetime "next_due"
+    t.date     "next_due"
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
     t.datetime "last_studied"
-    t.integer  "repetition"
-    t.float    "e_factor"
+    t.integer  "repetition",   default: 0
+    t.float    "e_factor",     default: 2.5
   end
 
   create_table "decks", force: :cascade do |t|
